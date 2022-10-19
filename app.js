@@ -1,8 +1,8 @@
+const cors = require('cors');
 const express = require('express')
 const app = express()
 const port = 4000
 const getCsv = require('./services.js');
-
 /*app.get('/csv', (req, res) => {
   const prezzi = [ 	
     { Data: 1, Benzina: 1 , Gasolio: 1 , Gpl: 1 },
@@ -39,7 +39,7 @@ const getCsv = require('./services.js');
       });            
   }); */ 
 //let file = fs.createWriteStream("prezzi.json"); //creaz file non ancora json ma in formato csv
-
+app.use(cors());
 
 app.get('/csv' , async (req , res) => {
   const prezzicsv = await getCsv()
